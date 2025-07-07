@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Deyvidy & Ana - Dias de Amor</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      width: 100%;
+      font-family: 'Georgia', serif;
+      background: linear-gradient(135deg, #ffe6f0, #ff66b3);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      flex-direction: column;
+      padding: 20px;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.15);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Flores de fundo */
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image: url('imagens/img.png');
+      background-repeat: repeat;
+      background-size: 80px 80px;
+      opacity: 0.1;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .nomes {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .e-simbolo {
+      background-color: #ff4db8;
+      color: white;
+      border-radius: 50%;
+      padding: 14px 22px;
+      margin: 0 20px;
+      font-family: 'Georgia', serif;
+      font-weight: 700;
+      font-size: 32px;
+      box-shadow: 0 0 12px rgba(255, 77, 184, 0.6);
+      user-select: none;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.3s ease;
+    }
+
+    .e-simbolo:hover {
+      background-color: #ff66cc;
+      box-shadow: 0 0 18px rgba(255, 102, 204, 0.8);
+      cursor: default;
+    }
+
+    .data-subtitulo {
+      font-size: 20px;
+      font-weight: 400;
+      margin: 0 0 40px;
+      font-family: 'Segoe UI', sans-serif;
+      color: #ffffff;
+      text-shadow: 0 0 6px #98004c;
+      position: relative;
+      z-index: 1;
+    }
+
+    .contador {
+      display: flex;
+      gap: 18px;
+      justify-content: center;
+      flex-wrap: nowrap;
+      max-width: 650px;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+    }
+
+    .bloco {
+      background: #fff;
+      border-radius: 24px;
+      padding: 25px 30px;
+      color: #ff0099;
+      font-weight: 700;
+      box-shadow: 0 4px 15px rgba(255, 0, 153, 0.35);
+      min-width: 95px;
+      user-select: none;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .bloco:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 25px rgba(255, 0, 153, 0.6);
+      cursor: default;
+    }
+
+    .numero {
+      font-size: 48px;
+      line-height: 1;
+      margin: 0;
+      font-weight: 900;
+      color: #ff3399;
+    }
+
+    .texto {
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #cc3366;
+      margin: 0;
+    }
+
+    /* Responsividade para celular */
+    @media (max-width: 600px) {
+      .nomes {
+        font-size: 32px;
+        letter-spacing: 2px;
+        flex-wrap: wrap;
+      }
+
+      .e-simbolo {
+        padding: 10px 16px;
+        font-size: 24px;
+        margin: 10px 10px;
+      }
+
+      .data-subtitulo {
+        font-size: 16px;
+        margin-bottom: 30px;
+      }
+
+      .contador {
+        flex-wrap: wrap;
+        gap: 12px;
+        max-width: 100%;
+      }
+
+      .bloco {
+        min-width: 70px;
+        padding: 15px 18px;
+      }
+
+      .numero {
+        font-size: 32px;
+      }
+
+      .texto {
+        font-size: 12px;
+        letter-spacing: 1px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="nomes">
+    Deyvidy <span class="e-simbolo">&</span> Ana
+  </div>
+  <div class="data-subtitulo">Desde 23 de Setembro de 2023</div>
+
+  <div class="contador" id="contador">
+    <div class="bloco">
+      <div class="numero" id="anos">0</div>
+      <div class="texto">Anos</div>
+    </div>
+    <div class="bloco">
+      <div class="numero" id="meses">0</div>
+      <div class="texto">Meses</div>
+    </div>
+    <div class="bloco">
+      <div class="numero" id="dias">0</div>
+      <div class="texto">Dias</div>
+    </div>
+    <div class="bloco">
+      <div class="numero" id="horas">0</div>
+      <div class="texto">Horas</div>
+    </div>
+    <div class="bloco">
+      <div class="numero" id="minutos">0</div>
+      <div class="texto">Minutos</div>
+    </div>
+    <div class="bloco">
+      <div class="numero" id="segundos">0</div>
+      <div class="texto">Segundos</div>
+    </div>
+  </div>
+
+  <script>
+    const startDate = new Date("2023-09-23T00:00:00");
+
+    function atualizarContador() {
+      const agora = new Date();
+
+      let anos = agora.getFullYear() - startDate.getFullYear();
+      let meses = agora.getMonth() - startDate.getMonth();
+      let dias = agora.getDate() - startDate.getDate();
+      let horas = agora.getHours() - startDate.getHours();
+      let minutos = agora.getMinutes() - startDate.getMinutes();
+      let segundos = agora.getSeconds() - startDate.getSeconds();
+
+      if (segundos < 0) {
+        segundos += 60;
+        minutos--;
+      }
+      if (minutos < 0) {
+        minutos += 60;
+        horas--;
+      }
+      if (horas < 0) {
+        horas += 24;
+        dias--;
+      }
+      if (dias < 0) {
+        const mesAnterior = new Date(agora.getFullYear(), agora.getMonth(), 0);
+        dias += mesAnterior.getDate();
+        meses--;
+      }
+      if (meses < 0) {
+        meses += 12;
+        anos--;
+      }
+
+      document.getElementById("anos").textContent = anos;
+      document.getElementById("meses").textContent = meses;
+      document.getElementById("dias").textContent = dias;
+      document.getElementById("horas").textContent = horas.toString().padStart(2, '0');
+      document.getElementById("minutos").textContent = minutos.toString().padStart(2, '0');
+      document.getElementById("segundos").textContent = segundos.toString().padStart(2, '0');
+    }
+
+    atualizarContador();
+    setInterval(atualizarContador, 1000);
+  </script>
+
+</body>
+</html>
