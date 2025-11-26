@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
-  <title>Ana & Deyvidy</title>
+  <title>Ana & Deyvidy 💖</title>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     * { box-sizing: border-box; }
@@ -10,7 +10,6 @@
     body {
       margin: 0;
       font-family: 'Quicksand', sans-serif;
-      /* Mantendo o visual original */
       background: linear-gradient(135deg, #ff4b8b, #ff77a9, #ff99c8);
       background-size: 400% 400%;
       animation: gradientShift 10s ease infinite;
@@ -69,9 +68,6 @@
       font-family: 'Quicksand', sans-serif;
       box-shadow: 0 6px 25px rgba(0,0,0,0.3);
       backdrop-filter: blur(6px);
-      /* Removi a animação de "flutuar" para ficar mais estático/solene, 
-         mas se quiser de volta, basta descomentar a linha abaixo */
-      /* animation: floatBox 4s ease-in-out infinite; */
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
@@ -105,7 +101,6 @@
       text-shadow: 0 0 8px rgba(255,255,255,0.7);
     }
 
-    /* Partículas de fundo */
     .particles {
       position: fixed;
       top: 0; left: 0;
@@ -130,7 +125,6 @@
       100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
     }
 
-    /* Corações */
     .hearts {
       position: fixed;
       top: 0; left: 0;
@@ -165,28 +159,28 @@
 <body>
   <div class="screen" id="counterScreen">
     <h1>Ana & Deyvidy</h1>
-    
     <div class="timer" id="timer"></div>
-    
-    <div class="phrase">Nas infinitas probabilidades de infinitos universos, eu te amaria em todos eles.</div>
-    
+    <div class="phrase">Acabou😔</div>
     <footer>Feito com amor por Deyvidy 💌</footer>
-    
     <div class="particles" id="particles"></div>
     <div class="hearts" id="hearts"></div>
   </div>
 
   <script>
-    // Data de Início
+    // --- CONFIGURAÇÃO DAS DATAS ---
+    // Data de início do namoro
     const startDate = new Date("2023-09-23T00:00:00");
-    // Data do Término (Ajustada para 18/10/2024)
-    const endDate = new Date("2024-10-18T00:00:00");
+    
+    // Data exata do término (fixa o tempo aqui)
+    const endDate = new Date("2024-10-18T00:00:00"); 
 
-    function updateTimer() {
-      // Calcula a diferença entre o fim e o início
-      const diff = endDate - startDate;
+    function calculateFixedDuration() {
+      // Calcula a diferença total em milissegundos
+      let diff = endDate - startDate;
 
-      // Cálculo das unidades de tempo
+      if (diff < 0) diff = 0; // Evita números negativos se a data estiver errada
+
+      // Matemática para converter milissegundos em tempo
       const seconds = Math.floor(diff / 1000);
       const minutes = Math.floor(seconds / 60);
       const hours = Math.floor(minutes / 60);
@@ -199,9 +193,8 @@
       const remainingMinutes = minutes % 60;
       const remainingSeconds = seconds % 60;
 
+      // Exibe na tela
       const timerEl = document.getElementById("timer");
-      
-      // Renderiza o HTML com os valores fixos
       timerEl.innerHTML = `
         ${createUnit(years, 'anos')}
         ${createUnit(months, 'meses')}
@@ -216,6 +209,7 @@
       return `<div class="unit">${value}<span class="label">${label}</span></div>`;
     }
 
+    // Funções visuais (fundo)
     function generateParticles() {
       const container = document.getElementById("particles");
       for (let i = 0; i < 80; i++) {
@@ -230,7 +224,6 @@
 
     function generateHearts() {
       const container = document.getElementById("hearts");
-      // Mantive os corações subindo, mas você pode remover essa função se preferir
       setInterval(() => {
         const heart = document.createElement("div");
         heart.className = "heart";
@@ -238,19 +231,15 @@
         heart.style.left = Math.random() * 100 + "vw";
         heart.style.fontSize = (12 + Math.random() * 16) + "px";
         heart.style.animationDuration = (4 + Math.random() * 4) + "s";
-
         container.appendChild(heart);
-
-        setTimeout(() => {
-          heart.remove();
-        }, 7000);
+        setTimeout(() => { heart.remove(); }, 7000);
       }, 500);
     }
 
-    // Chama a função apenas uma vez para setar o tempo total
-    updateTimer();
+    // Executa o cálculo apenas UMA VEZ.
+    // Não usamos setInterval aqui, então os segundos não vão se mover.
+    calculateFixedDuration();
     
-    // Inicia os efeitos visuais de fundo
     generateParticles();
     generateHearts();
   </script>
